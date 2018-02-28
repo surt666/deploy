@@ -3,6 +3,14 @@ defaults: &defaults
 
 version: 2
 jobs:
+  build:
+    <<: *defaults
+    docker:
+      - image: wilson208/circleci-awscl
+
+    steps:
+      run: aws cloudformation list-stacks
+ 
   deploy-dev:
      <<: *defaults
     docker:
@@ -23,6 +31,7 @@ workflows:
   version: 2
   deploy:
     jobs:
+      - build
       - hold-dev:
           type: approval
       - deploy-dev
