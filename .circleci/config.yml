@@ -11,7 +11,7 @@ jobs:
     steps:
       - checkout
 
-      - run: ./deploy.desc
+      - run: cat ./deploy.desc >> $BASH_ENV
 
       - run: echo $DEV_VERSION
 
