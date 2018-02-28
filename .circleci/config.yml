@@ -3,7 +3,7 @@ defaults: &defaults
 
 version: 2
 jobs:
-  deploy_dev:
+  deploy-dev:
     <<: *defaults
     docker:
       - image: wilson208/circleci-awscli
