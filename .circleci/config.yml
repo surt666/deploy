@@ -36,7 +36,11 @@ workflows:
       - build
       - hold-dev:
           type: approval
-      - deploy-dev
+      - deploy-dev:
+          requires:
+            - hold-dev
       - hold-test:
           type: approval
-      - deploy-test
+      - deploy-test:
+          requires:
+            - hold-test
