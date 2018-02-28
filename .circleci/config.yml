@@ -13,9 +13,9 @@ jobs:
 
       - run: cat ./deploy.desc >> $BASH_ENV
 
-      - run: echo $DEV_VERSION
+      - run: aws s3 cp "s3://dk.vurdst.ice.artifacts/aggregate-sag-lambda-$DEV_VERSION.jar" .
 
-      - run: cat deploy.desc
+      - run: ls
 
   deploy-dev:
     <<: *defaults
