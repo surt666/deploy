@@ -6,7 +6,7 @@ jobs:
   build:
     <<: *defaults
     docker:
-      - image: wilson208/circleci-awscl
+      - image: wilson208/circleci-awscli
 
     steps:
       - checkout
@@ -16,7 +16,7 @@ jobs:
   deploy-dev:
     <<: *defaults
     docker:
-      - image: wilson208/circleci-awscl
+      - image: wilson208/circleci-awscli
 
     steps:
       - run: aws cloudformation list-stacks
@@ -24,7 +24,7 @@ jobs:
   deploy-test:
     <<: *defaults
     docker:
-      - image: wilson208/circleci-awscl
+      - image: wilson208/circleci-awscli
 
     steps:
       - run: aws cloudformation list-stacks
