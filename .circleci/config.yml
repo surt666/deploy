@@ -11,7 +11,7 @@ jobs:
     steps:
       - checkout
 
-      - run: aws cloudformation list-stacks
+      - run: aws cloudformation list-stacks --region eu-west-1
 
   deploy-dev:
     <<: *defaults
@@ -19,7 +19,7 @@ jobs:
       - image: wilson208/circleci-awscli
 
     steps:
-      - run: aws cloudformation list-stacks
+      - run: aws cloudformation list-stacks --region eu-west-1
 
   deploy-test:
     <<: *defaults
@@ -27,7 +27,7 @@ jobs:
       - image: wilson208/circleci-awscli
 
     steps:
-      - run: aws cloudformation list-stacks
+      - run: aws cloudformation list-stacks --region eu-west-1
 
 workflows:
   version: 2
