@@ -12,17 +12,17 @@ jobs:
       - checkout
 
       - run: aws cloudformation list-stacks
- 
+
   deploy-dev:
-     <<: *defaults
+    <<: *defaults
     docker:
       - image: wilson208/circleci-awscl
-    
+
     steps:
       - run: aws cloudformation list-stacks
 
   deploy-test:
-     <<: *defaults
+    <<: *defaults
     docker:
       - image: wilson208/circleci-awscl
 
