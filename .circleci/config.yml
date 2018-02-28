@@ -3,7 +3,7 @@ defaults: &defaults
 
 version: 2
 jobs:
-  build1:
+  deploy_dev:
     <<: *defaults
     docker:
       - image: wilson208/circleci-awscli
@@ -17,7 +17,7 @@ jobs:
 
       - run: ls
 
-  deploy-dev:
+  deploy-test:
     <<: *defaults
     docker:
       - image: wilson208/circleci-awscli
@@ -31,24 +31,11 @@ jobs:
 
       - run: ls
 
-  deploy-test:
-    <<: *defaults
-    docker:
-      - image: wilson208/circleci-awscli
-
-    steps:
-      - run: aws cloudformation list-stacks --region eu-west-1
-
 workflows:
   version: 2
   deploy-line:
     jobs:
-      - build1
-      - hold-dev:
-          type: approval
-      - deploy-dev:
-          requires:
-            - hold-dev
+      - deploy-dev
       - hold-test:
           type: approval
       - deploy-test:
