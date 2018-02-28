@@ -9,7 +9,9 @@ jobs:
       - image: wilson208/circleci-awscl
 
     steps:
-      run: aws cloudformation list-stacks
+      - checkout
+
+      - run: aws cloudformation list-stacks
  
   deploy-dev:
      <<: *defaults
@@ -17,7 +19,7 @@ jobs:
       - image: wilson208/circleci-awscl
     
     steps:
-      run: aws cloudformation list-stacks
+      - run: aws cloudformation list-stacks
 
   deploy-test:
      <<: *defaults
@@ -25,7 +27,7 @@ jobs:
       - image: wilson208/circleci-awscl
 
     steps:
-      run: aws cloudformation list-stacks
+      - run: aws cloudformation list-stacks
 
 workflows:
   version: 2
