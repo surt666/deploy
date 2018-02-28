@@ -1,0 +1,31 @@
+defaults: &defaults
+  working_directory: ~/repo
+
+version: 2
+jobs:
+  deploy-dev:
+     <<: *defaults
+    docker:
+      - image: wilson208/circleci-awscl
+    
+    steps:
+      run: aws cloudformation list-stacks
+
+  deploy-test:
+     <<: *defaults
+    docker:
+      - image: wilson208/circleci-awscl
+
+    steps:
+      run: aws cloudformation list-stacks
+
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - hold-dev:
+          type: approval
+      - deploy-dev
+      - hold-test:
+          type: approval
+      - deploy-test
