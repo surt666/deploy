@@ -11,7 +11,9 @@ jobs:
     steps:
       - checkout
 
-      - run: aws cloudformation list-stacks --region eu-west-1
+      - run: . deploy.desc
+
+      - run: env
 
   deploy-dev:
     <<: *defaults

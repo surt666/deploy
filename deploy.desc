@@ -1,0 +1,2 @@
+export DEV_VERSION=1.2.3
+export TEST_VERSION=1.2.0
