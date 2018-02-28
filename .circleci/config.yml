@@ -11,7 +11,9 @@ jobs:
     steps:
       - checkout
 
-      - run: . deploy.desc
+      - run: . ./deploy.desc
+
+      - run: ls
 
       - run: env
 
