@@ -28,8 +28,8 @@ jobs:
       - checkout
 
       - run: cat ./deploy.desc >> $BASH_ENV
-LAMBDA_
-      - run: aws s3 cp "s3://dk.vurdst.ice.artifacts/aggregate-sag-lambda-$AGGR_SAG_PREPROD_VERSION.yaml" .
+
+      - run: aws s3 cp "s3://dk.vurdst.ice.artifacts/aggregate-sag-lambda-$AGGR_SAG_LAMBDA_PREPROD_VERSION.yaml" .
 
       - run: aws cloudformation deploy --template-file packaged-template.yaml --stack-name aggrsag-preprod --capabilities CAPABILITY_IAM --region eu-west-1 --parameter-overrides Stage=preprod
 
