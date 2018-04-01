@@ -3,7 +3,7 @@ version: 0.2
 env:
   variables:
     EVENT_SYSTEM_DEV_LOCATION: "s3://dk.vurdst.ice.artifacts/"
-    EVENt_SYSTEM_DEV_VERSION: "0.15.0"
+    EVENT_SYSTEM_DEV_VERSION: "0.15.0"
 
 phases:
   install:
@@ -21,7 +21,7 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
-      - aws cloudformation deploy --template-file sam.yaml --stack-name EventSystem --capabilities CAPABILITY_IAM --region eu-west-1 --parameter-overrides Stage=dev Bucket=dk.vurdst.ice.artifacts Key="event-system-0.15.0-standalone.jar" Role=arn:aws:iam::593176282530:role/lambda-s3-execution-role
+      - aws cloudformation deploy --template-file sam.yaml --stack-name EventSystem --capabilities CAPABILITY_IAM --region eu-west-1 --parameter-overrides Stage=dev Bucket=dk.vurdst.ice.artifacts Key="event-system-$EVENT_SYSTEM_DEV_VERSION-standalone.jar" Role=arn:aws:iam::593176282530:role/lambda-s3-execution-role
 
 artifacts:
   files:
