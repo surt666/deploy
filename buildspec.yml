@@ -21,6 +21,8 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
+      - aws cloudformation deploy --template-file /tmp/artifact/sam.yaml --stack-name EventSystem --capabilities CAPABILITY_IAM --region eu-west-1 --parameter-overrides Stage=dev Bucket=dk.vurdst.ice.artifacts Key="event-system-0.15.0-standalone.jar" Role=arn:aws:iam::593176282530:role/lambda-s3-execution-role
+
 artifacts:
   files:
     - target/aggregate-sag-lambda-0.1.0-SNAPSHOT-standalone.jar
