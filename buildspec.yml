@@ -4,21 +4,16 @@ env:
   variables:
     EVENT_SYSTEM_DEV_BUCKET: "dk.vurdst.ice.artifacts"
     EVENT_SYSTEM_DEV_VERSION: "0.15.0"
+    AGGRAGATE_SAG_DEV_VERSION: "0.12.0"
 
 phases:
-  install:
-    commands:
-      - echo Nothing to do in the install phase...
-      - echo $EVENT_SYSTEM_DEV_LOCATION
-      - printenv
   pre_build:
     commands:
       - echo Verify artifacts
       - aws s3 cp "s3://$EVENT_SYSTEM_DEV_BUCKET/event-system-$EVENT_SYSTEM_DEV_VERSION-sam.yaml" event-system.yaml
-  build:
-    commands:
-      - echo Build started on `date`
+      - aws s3 cp "s3://$EVENT_SYSTEM_DEV_BUCKET/aggregate-sag-$AGGREGATE_SAG_DEV_VERSION-sam.yaml" aggregate-sag.yaml
   post_build:
     commands:
       - echo Build completed on `date`
       - aws cloudformation deploy --no-fail-on-empty-changeset --template-file event-system.yaml --stack-name EventSystem --capabilities CAPABILITY_IAM --region eu-west-1 --parameter-overrides Stage=dev Bucket=$EVENT_SYSTEM_DEV_BUCKET Key="event-system-$EVENT_SYSTEM_DEV_VERSION-standalone.jar" Role=arn:aws:iam::593176282530:role/lambda-s3-execution-role
+      - aws cloudformation deploy --no-fail-on-empty-changeset --template-file aggrgate-sag.yaml --stack-name EventSystem --capabilities CAPABILITY_IAM --region eu-west-1 --parameter-overrides Stage=dev Bucket=$EVENT_SYSTEM_DEV_BUCKET Key="event-system-$AGGREGATE_SAG_DEV_VERSION-standalone.jar" Role=arn:aws:iam::593176282530:role/lambda-s3-execution-role
