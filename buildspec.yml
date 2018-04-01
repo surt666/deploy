@@ -3,8 +3,8 @@ version: 0.2
 env:
   variables:
     EVENT_SYSTEM_DEV_BUCKET: "dk.vurdst.ice.artifacts"
-    EVENT_SYSTEM_DEV_VERSION: "0.15.0"
-    AGGREGATE_SAG_DEV_VERSION: "0.1.0"
+  #  EVENT_SYSTEM_DEV_VERSION: "0.15.0"
+  #  AGGREGATE_SAG_DEV_VERSION: "0.1.0"
 
 phases:
   pre_build:
