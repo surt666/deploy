@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    EVENT_SYSTEM_DEV_LOCATION: "s3://dk.vurdst.ice.artifacts/"
+    EVENT_SYSTEM_DEV_LOCATION: "s3://dk.vurdst.ice.artifacts"
     EVENT_SYSTEM_DEV_VERSION: "0.15.0"
 
 phases:
@@ -14,7 +14,7 @@ phases:
   pre_build:
     commands:
       - echo Verify artifacts
-      - aws s3 cp "$EVENT_SYSTEM_DEV_LOCATIONevent-system-$EVENT_SYSTEM_DEV_VERSION-sam.yaml" event-system.yaml
+      - aws s3 cp "$EVENT_SYSTEM_DEV_LOCATION/event-system-$EVENT_SYSTEM_DEV_VERSION-sam.yaml" event-system.yaml
   build:
     commands:
       - echo Build started on `date`
