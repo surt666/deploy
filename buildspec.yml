@@ -16,4 +16,4 @@ phases:
     commands:
       - echo Build completed on `date`
       - aws cloudformation deploy --no-fail-on-empty-changeset --template-file event-system.yaml --stack-name EventSystem --capabilities CAPABILITY_IAM --region eu-west-1 --parameter-overrides Stage=dev Bucket=$EVENT_SYSTEM_DEV_BUCKET Key="event-system-$EVENT_SYSTEM_DEV_VERSION-standalone.jar" Role=arn:aws:iam::593176282530:role/lambda-s3-execution-role
-      - aws cloudformation deploy --no-fail-on-empty-changeset --template-file aggrgate-sag.yaml --stack-name EventSystem --capabilities CAPABILITY_IAM --region eu-west-1 --parameter-overrides Stage=dev Bucket=$EVENT_SYSTEM_DEV_BUCKET Key="event-system-$AGGREGATE_SAG_DEV_VERSION-standalone.jar" Role=arn:aws:iam::593176282530:role/lambda-s3-execution-role
+      - aws cloudformation deploy --no-fail-on-empty-changeset --template-file aggrgate-sag.yaml --stack-name AggregateSag --capabilities CAPABILITY_IAM --region eu-west-1 --parameter-overrides Stage=dev Bucket=$EVENT_SYSTEM_DEV_BUCKET Key="event-system-$AGGREGATE_SAG_DEV_VERSION-standalone.jar" Role=arn:aws:iam::593176282530:role/lambda-s3-execution-role
