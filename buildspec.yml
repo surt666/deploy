@@ -14,14 +14,14 @@ phases:
   pre_build:
     commands:
       - echo Verify artifacts
-      - aws s3 cp "s3://dk.vurdst.ice.artifacts/sam.yaml" .
+      - aws s3 cp "$EVENT_SYSTEM_DEV_LOCATION/event-system-$EVENT_SYSTEM_DEV_VERSION-sam.yaml" event-system.yaml
   build:
     commands:
       - echo Build started on `date`
   post_build:
     commands:
       - echo Build completed on `date`
-      - aws cloudformation deploy --template-file sam.yaml --stack-name EventSystem --capabilities CAPABILITY_IAM --region eu-west-1 --parameter-overrides Stage=dev Bucket=dk.vurdst.ice.artifacts Key="event-system-$EVENT_SYSTEM_DEV_VERSION-standalone.jar" Role=arn:aws:iam::593176282530:role/lambda-s3-execution-role
+      - aws cloudformation deploy --template-file event-system.yaml --stack-name EventSystem --capabilities CAPABILITY_IAM --region eu-west-1 --parameter-overrides Stage=dev Bucket=$EVENT_SYSTEM_DEV_LOCATION Key="event-system-$EVENT_SYSTEM_DEV_VERSION-standalone.jar" Role=arn:aws:iam::593176282530:role/lambda-s3-execution-role
 
 artifacts:
   files:
