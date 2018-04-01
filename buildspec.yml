@@ -9,6 +9,8 @@ phases:
   install:
     commands:
       - echo Nothing to do in the install phase...
+      - echo $EVENT_SYSTEM_DEV_LOCATION
+      - printenv
   pre_build:
     commands:
       - echo Verify artifacts
