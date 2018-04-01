@@ -10,6 +10,7 @@ phases:
   pre_build:
     commands:
       - echo Verify artifacts
+      - printenv
       - aws s3 cp "s3://$EVENT_SYSTEM_DEV_BUCKET/event-system-$EVENT_SYSTEM_DEV_VERSION-sam.yaml" event-system.yaml
       - aws s3 cp "s3://$EVENT_SYSTEM_DEV_BUCKET/aggregate-sag-$AGGREGATE_SAG_DEV_VERSION-sam.yaml" aggregate-sag.yaml
   post_build:
