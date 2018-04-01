@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    EVENT_SYSTEM_DEV_LOCATION: "s3://dk.vurdst.ice.artifacts/"
+    EVENT_SYSTEM_DEV_LOCATION: "s3://dk.vurdst.ice.artifacts"
     EVENT_SYSTEM_DEV_VERSION: "0.15.0"
 
 phases:
