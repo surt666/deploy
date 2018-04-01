@@ -12,7 +12,7 @@ phases:
   pre_build:
     commands:
       - echo Verify artifacts
-      - aws s3 ls "$EVENT_SYSTEM_DEV_LOCATION/event-system-$EVENt_SYSTEM_DEV_VERSION-standalone.jar"
+      - aws s3 ls "s3://dk.vurdst.ice.artifacts/event-system-0.15.0-standalone.jar"
   build:
     commands:
       - echo Build started on `date`
