@@ -1,0 +1,24 @@
+version: 0.2
+
+env:
+  variables:
+    EVENT_SYSTEM_DEV_LOCATION: "s3://dk.vurdst.ice.artifacts/"
+    EVENt_SYSTEM_DEV_VERSION: "0.15.0"
+
+phases:
+  install:
+    commands:
+      - echo Nothing to do in the install phase...
+  pre_build:
+    commands:
+      - echo Verify artifacts
+      - aws s3 ls "$EVENT_SYSTEM_DEV_LOCATION/event-system-$EVENt_SYSTEM_DEV_VERSION-standalone.jar"
+  build:
+    commands:
+      - echo Build started on `date`
+  post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - target/aggregate-sag-lambda-0.1.0-SNAPSHOT-standalone.jar
